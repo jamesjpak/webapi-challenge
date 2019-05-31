@@ -4,8 +4,8 @@
   "description": "Web API Challenge",
   "main": "index.js",
   "scripts": {
-    "start" : "node index.js",
-    "server" : "nodemon index.js"
+    "start": "node index.js",
+    "server": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/LambdaSchool/Sprint-Challenge-Node-Express#readme",
   "dependencies": {
+    "express": "^4.17.1",
     "helmet": "^3.16.0",
     "knex": "^0.16.5",
     "nodemon": "^1.19.1",
