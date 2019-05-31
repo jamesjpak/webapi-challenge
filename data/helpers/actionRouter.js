@@ -7,23 +7,21 @@ const Actions = require("./actionModel");
 
 // Get list of actions
 router.get("/", (req, res) => {
-    Actions
-    .get()
-      .then(actions => {
-        if (actions) {
-          res.status(200).json(actions);
-        } else {
-          res.status(404).json({ message: "Actions not found!" });
-        }
-      })
-      .catch(error => {
-        res.status(500).json({
-          message: "Error retrieving actions!"
-        });
+  Actions.get()
+    .then(actions => {
+      if (actions) {
+        res.status(200).json(actions);
+      } else {
+        res.status(404).json({ message: "Actions not found!" });
+      }
+    })
+    .catch(error => {
+      res.status(500).json({
+        message: "Error retrieving actions!"
       });
-  });
-  
-  
+    });
+});
+
 // Get list of actions for a project
 router.get("/:id", validateProjectId, (req, res) => {
   Projects.getProjectActions(req.params.id)
@@ -41,10 +39,8 @@ router.get("/:id", validateProjectId, (req, res) => {
     });
 });
 
-
 // Add action to a project
 router.post("/:id"), validateProjectId, (req, res) => {
-
     const newAction = {
       description: req.body.description,
       notes: req.body.notes,
@@ -61,23 +57,21 @@ router.post("/:id"), validateProjectId, (req, res) => {
       });
   };
 
-
-  // delete action
-  router.delete("/:id", async (req, res) => {
-    try {
-      const count = await Actions.remove(req.params.id);
-      if (count > 0) {
-        res.status(200).json({ message: "Action deleted!" });
-      } else {
-        res.status(404).json({ message: "Action could not be found" });
-      }
-    } catch (error) {
-      res.status(500).json({
-        message: "Error removing project"
-      });
+// delete action
+router.delete("/:id", async (req, res) => {
+  try {
+    const count = await Actions.remove(req.params.id);
+    if (count > 0) {
+      res.status(200).json({ message: "Action deleted!" });
+    } else {
+      res.status(404).json({ message: "Action could not be found" });
     }
-  });
-
+  } catch (error) {
+    res.status(500).json({
+      message: "Error removing project"
+    });
+  }
+});
 
 //  update an action
 
@@ -97,7 +91,6 @@ router.post("/:id"), validateProjectId, (req, res) => {
 //       });
 //     }
 //   });
-  
 
 // middleware for validating
 function validateProjectId(req, res, next) {
