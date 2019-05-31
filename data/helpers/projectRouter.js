@@ -71,7 +71,7 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-// Get list of actions
+// Get list of actions from a selected project
 router.get("/:id/actions", (req, res) => {
   Projects.getProjectActions(req.params.id)
     .then(actions => {
@@ -88,25 +88,6 @@ router.get("/:id/actions", (req, res) => {
     });
 });
 
-// Add action to a project
-router.post("/:id/actions"), validateProjectId, (req, res) => {
-    
-    const newAction = {
-      description: req.body.description,
-      notes: req.body.notes,
-      project_id: req.params.id
-    };
-
-    Actions.insert(newAction)
-      .then(action => {
-        res.status(201).json(action);
-      })
-      .catch(error => {
-        console.log(error);
-        res.status(500).json({ message: "Error adding action" });
-      });
-  };
-  
 
 // middleware for validating
 function validateProjectId(req, res, next) {
