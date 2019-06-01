@@ -26,13 +26,26 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] Mention two parts of Express that you learned about this week.
 
+I am able to incorporate two important features such as routing and middleware when Express is utilized.   
+
+
 - [ ] Describe Middleware?
+
+Middleware are functions that receive requests and responses, then perform appropriate changes or actions set by the developer.  Furthermore, all middleware functions are fired one after the other in order.  Authentication and logging is usually handled in with middleware.  
+
 
 - [ ] Describe a Resource?
 
+A resource is any piece of data or information in a system.  Everything within an API is a resource.  
+
 - [ ] What can the API return to help clients know if a request was successful?
 
+The API can return a status(200) with a custom json message attached such as “Success!” 
+
+
 - [ ] How can we partition our application into sub-applications?
+
+We can break down our application into sub-applications by creating unique routers with the appropriate architecture and actions built according to specific data.  
 
 ## Project Setup
 
